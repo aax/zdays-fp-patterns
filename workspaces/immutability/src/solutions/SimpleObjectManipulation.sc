@@ -1,12 +1,8 @@
 case class Address( street: String, city: String )
-case class Person( age: Int, name: String, account: Int, address: Address )
+case class Person( firstName: String, lastName: String, address: Address )
 
-val max = new Person( 30, "Max", 2000, Address("Wiesenstrasse", "Zurich") )
-max.age
+val max = new Person( "Max", "Muster", Address("Wiesenstrasse", "Zurich") )
 
-val hans = max.copy(name = "Hans")
-hans.age
+val maxGotMarried = max.copy(lastName = "Doe")
 
-val julia = max.copy( name="Julia")
-val juliaHasMoved =
-  julia.copy( address = julia.address.copy(street = "Steinstrasse"))
+val maxMoved = maxGotMarried.copy(address = maxGotMarried.address.copy(street = "Steinstrasse"))
