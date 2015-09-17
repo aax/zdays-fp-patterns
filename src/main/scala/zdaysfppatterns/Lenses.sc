@@ -14,7 +14,7 @@ val me = Person(
   )
 )
 
-val updated = me.copy(
+val updatedNestedCopy = me.copy(
   contact = me.contact.copy(
     email = me.contact.email.copy(
       user = "test"
