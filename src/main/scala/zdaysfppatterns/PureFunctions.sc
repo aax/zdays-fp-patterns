@@ -1,4 +1,3 @@
-
 trait CreditCard {
   def charge( price: Double )
 }
@@ -28,3 +27,5 @@ class Cafe {
     (cup, Charge(cc, cup.price))
   }
 }
+
+// vermeiden von externen akkumulatoren
