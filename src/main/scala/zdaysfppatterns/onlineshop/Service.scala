@@ -10,9 +10,9 @@ object Service {
   def loadUserOrNull(name: String): User = users.get(name).getOrElse(null)
   def loadOrderOrNull(userId: Int): Order = orders.get(userId).getOrElse(null)
 
-  def loadUser(name: String): Option[User] = users.get(name)
-  def loadOrder(userId: Int): Option[Order] = orders.get(userId)
+  def findUser(name: String): Option[User] = users.get(name)
+  def findOrder(userId: Int): Option[Order] = orders.get(userId)
 
-  def loadUserAsync(name: String): Future[Option[User]] = Future(users.get(name))
-  def loadOrderAsync(userId: Int): Future[Option[Order]] = Future(orders.get(userId))
+  def loadUserAsync(name: String): Future[User] = Future(users(name))
+  def loadOrderAsync(userId: Int): Future[Order] = Future(orders(userId))
 }

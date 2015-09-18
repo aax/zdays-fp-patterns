@@ -15,8 +15,8 @@ if (invoice != null) {
 }
 
 // version 2
-val userOption: Option[User] = loadUser("John")
-val orderOption: Option[Order] = userOption.flatMap(user => loadOrder(user.id))
+val userOption: Option[User] = findUser("John")
+val orderOption: Option[Order] = userOption.flatMap(user => findOrder(user.id))
 val invoiceOption: Option[Invoice] = orderOption.map(order => order.invoice)
 
 invoiceOption.foreach { invoice =>
@@ -25,8 +25,8 @@ invoiceOption.foreach { invoice =>
 
 // version 3
 for {
-  user <- loadUser("John")
-  order <- loadOrder(user.id)
+  user <- findUser("John")
+  order <- findOrder(user.id)
   invoice = order.invoice
 } {
   println(invoice)
