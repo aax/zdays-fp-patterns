@@ -1,2 +1,0 @@
-package zdaysfppatterns.onlineshop
-
