@@ -6,15 +6,16 @@ import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
 
 // version 1
-val userFuture: Future[User] = loadUserAsync("John")
-val orderFuture: Future[Order] = userFuture.flatMap(user => loadOrderAsync(user.id))
-val invoiceFuture: Future[Invoice] = orderFuture.map(order => order.invoice)
+val asyncUser = loadUserAsync("John")
+val asyncOrder: Future[Order] = asyncUser.flatMap(user => loadOrderAsync(user.id))
+val asyncInvoice: Future[Invoice] = asyncOrder.map(order => order.invoice)
 
-invoiceFuture.foreach { invoice =>
+// leaving the box
+asyncInvoice.foreach { invoice =>
   println(invoice)
 }
 
-Await.result(invoiceFuture, 1.second)
+Await.result(asyncInvoice, 1.second)
 
 // version 2
 val invoiceFuture2 = for {

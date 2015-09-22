@@ -15,12 +15,17 @@ if (invoice != null) {
 }
 
 // version 2
-val userOption: Option[User] = findUser("John")
-val orderOption: Option[Order] = userOption.flatMap(user => findOrder(user.id))
-val invoiceOption: Option[Invoice] = orderOption.map(order => order.invoice)
+val optionalUser = findUser("John")
+val optionalOrder = optionalUser.flatMap(user => findOrder(user.id))
+val optionalInvoice = optionalOrder.map(order => order.invoice)
 
-invoiceOption.foreach { invoice =>
-  println(invoice)
+// leaving the box
+optionalInvoice.foreach(invoice =>
+  println(invoice))
+
+optionalInvoice match {
+  case Some(invoice) => println(invoice)
+  case None => println("no invoice")
 }
 
 // version 3
