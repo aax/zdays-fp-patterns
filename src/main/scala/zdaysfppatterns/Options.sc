@@ -24,10 +24,10 @@ invoiceOption.foreach { invoice =>
 }
 
 // version 3
-for {
-  user <- findUser("John")
+val userNames = List("John", "Elvis")
+val results = for {
+  userName <- userNames
+  user <- findUser(userName)
   order <- findOrder(user.id)
   invoice = order.invoice
-} {
-  println(invoice)
-}
+} yield invoice

@@ -24,8 +24,7 @@ class Cafe {
 
   def buyCoffeeStep3(cc: CreditCard): (Coffee, Charge) = {
     val cup = new Coffee( 3 )
-    (cup, Charge(cc, cup.price))
+    val charge = Charge(cc, cup.price)
+    (cup, charge)
   }
 }
-
-// vermeiden von externen akkumulatoren
