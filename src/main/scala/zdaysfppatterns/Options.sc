@@ -27,12 +27,3 @@ optionalInvoice match {
   case Some(invoice) => println(invoice)
   case None => println("no invoice")
 }
-
-// version 3
-val userNames = List("John", "Elvis")
-val results = for {
-  userName <- userNames
-  user <- findUser(userName)
-  order <- findOrder(user.id)
-  invoice = order.invoice
-} yield invoice
