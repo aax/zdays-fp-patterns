@@ -26,11 +26,24 @@ suggestions
 // version 2
 def computeSuggestions(item: Item): Seq[Int] = {
   val similarItems = Inventory.getSimilarItems(item)
-  val suggestedItems = similarItems.filter(_.rating > item.rating)
+  val suggestedItems = similarItems.filter(other =>
+    other.rating > item.rating)
   suggestedItems.map(item => item.id)
 }
 
 val suggestions2 = items.flatMap(item => computeSuggestions(item))
+
+
+
+
+
+
+
+
+
+
+
+
 
 // version 3
 val suggestions3 = for {
