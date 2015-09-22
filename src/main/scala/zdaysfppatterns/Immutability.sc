@@ -14,12 +14,3 @@ val updated = prependZero.updated(2, 10)
 val tail = prependZero.tail
 val head = prependZero.head
 val tailHead = prependZero.tail.head
-
-// Mutable list mutation
-val names = scala.collection.mutable.ArrayBuffer("ivo", "hendrik")
-val languages = List("Scala", "Java", "Ruby")
-val container = (names, languages)
-
-names.clear()
-names += "max"
-names += "muster"

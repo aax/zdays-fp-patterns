@@ -2,6 +2,7 @@ package zdaysfppatterns.onlineshop
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.Try
 
 object Service {
   private lazy val users = Map("John" -> User(1, "John"), "Sarah" -> User(2, "Sarah"))
