@@ -1,5 +1,3 @@
-import zdaysfppatterns.onlineshop._
-
 import scala.collection.mutable
 
 /**
@@ -8,9 +6,9 @@ import scala.collection.mutable
  * - but have a higher rating
  */
 
-val items = Vector(Item(103, 59, 3), Item(117, 39, 4), Item(351, 79, 2))
+val items = Vector(Item(103, 3), Item(117, 4))
 
-// version 1
+// version 1: using control structures
 val suggestions = new mutable.MutableList[Int]()
 for (item <- items) {
   val similarItems = Inventory.getSimilarItems(item)
@@ -23,7 +21,7 @@ for (item <- items) {
 suggestions
 
 
-// version 2
+// version 2: using higher order functions
 def computeSuggestions(item: Item): Seq[Int] = {
   val similarItems = Inventory.getSimilarItems(item)
   val suggestedItems = similarItems.filter(other =>
@@ -32,22 +30,3 @@ def computeSuggestions(item: Item): Seq[Int] = {
 }
 
 val suggestions2 = items.flatMap(item => computeSuggestions(item))
-
-
-
-
-
-
-
-
-
-
-
-
-
-// version 3
-val suggestions3 = for {
-  item <- items
-  similarItem <- Inventory.getSimilarItems(item)
-  if similarItem.rating > item.rating
-} yield similarItem.id

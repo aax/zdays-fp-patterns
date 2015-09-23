@@ -1,8 +1,9 @@
-package zdaysfppatterns.onlineshop
-
-import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.Try
+import scala.concurrent.Future
+
+case class User(id: Int, name: String)
+case class Order(id: Int, invoice: Invoice)
+case class Invoice(amount: Int)
 
 object Service {
   private lazy val users = Map("John" -> User(1, "John"), "Sarah" -> User(2, "Sarah"))

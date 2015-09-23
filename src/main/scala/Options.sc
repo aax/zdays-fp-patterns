@@ -1,7 +1,8 @@
-import zdaysfppatterns.onlineshop._
 import Service._
 
-// version 1
+
+
+// version 1: using null
 val user: User = loadUserOrNull("John")
 var invoice: Invoice = null
 if (user != null) {
@@ -14,7 +15,9 @@ if (invoice != null) {
   println(invoice)
 }
 
-// version 2
+
+
+// version 2: using options
 val optionalUser = findUser("John")
 val optionalOrder = optionalUser.flatMap(user => findOrder(user.id))
 val optionalInvoice = optionalOrder.map(order => order.invoice)

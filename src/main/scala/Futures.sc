@@ -1,9 +1,10 @@
-import zdaysfppatterns.onlineshop.Service._
-import zdaysfppatterns.onlineshop.{Invoice, Order, User}
+import Service._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
+
+
 
 
 val asyncUser = loadUserAsync("John")
